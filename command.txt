@@ -1,2 +1,20 @@
-EXPLAIN SELECT c_id FROM customer;
+
+
+- A query accessing single table with WHERE
+EXPLAIN SELECT c_street_1 FROM customer WHERE c_id=1;
+
+- A query accessing multiple tables with WHERE
+EXPLAIN SELECT d_id FROM district, warehouse WHERE d_w_id = w_id;
+
+- A query with ORDER BY
+EXPLAIN SELECT c_id, c_first FROM customer ORDER BY c_first;
+
+- A query with GROUP BY and at least one aggregation function (MIN, MAX, COUNT, AVG... etc.)
+EXPLAIN SELECT MAX(d_id) FROM district GROUP BY d_name;
+
+
+
+
+
 EXPLAIN SELECT COUNT(d_id) FROM district, warehouse WHERE d_w_id = w_id GROUP BY w_id;
+EXPLAIN SELECT 

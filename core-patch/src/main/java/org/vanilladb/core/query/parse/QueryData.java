@@ -143,8 +143,6 @@ public class QueryData {
 
 	public String toString() {
 		StringBuilder result = new StringBuilder();
-		if (explain)
-			result.append("explain ");
 		result.append("select ");
 		for (String fldname : projFields)
 			result.append(fldname + ", ");

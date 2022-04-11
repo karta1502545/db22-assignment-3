@@ -20,7 +20,6 @@ public class ExplainScan implements Scan {
             numOfRecords++;
         }
         s.close();
-        System.out.println( "numOfRecords = " + numOfRecords);
         stat +=  "\n Actual #recs: " + numOfRecords;
     }
 
