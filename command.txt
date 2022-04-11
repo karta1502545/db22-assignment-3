@@ -1,0 +1,2 @@
+EXPLAIN SELECT c_id FROM customer;
+EXPLAIN SELECT COUNT(d_id) FROM district, warehouse WHERE d_w_id = w_id GROUP BY w_id;

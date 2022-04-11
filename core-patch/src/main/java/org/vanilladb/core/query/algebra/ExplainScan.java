@@ -8,6 +8,7 @@ public class ExplainScan implements Scan {
     private Scan s;
     private Schema schema;
     private String stat;
+    private boolean isAccessed;
 
     public ExplainScan(Scan s, Schema schema, String explainResult) { // called by ExplainPlan.open()
         this.s = s;
@@ -15,9 +16,11 @@ public class ExplainScan implements Scan {
         stat = explainResult;
         int numOfRecords = 0;
         s.beforeFirst();
-        while (s.next())
+        while (s.next()) {
             numOfRecords++;
+        }
         s.close();
+        System.out.println( "numOfRecords = " + numOfRecords);
         stat +=  "\n Actual #recs: " + numOfRecords;
     }
 
@@ -30,6 +33,7 @@ public class ExplainScan implements Scan {
 	 */
 	@Override
 	public void beforeFirst() {
+        isAccessed = true;
 		s.beforeFirst();
 	}
 
@@ -43,8 +47,10 @@ public class ExplainScan implements Scan {
 	 */
 	@Override
 	public boolean next() {
-		if (s.next())
+		if (isAccessed) {
+            isAccessed = false;
             return true;
+        }
         return false;
 	}
 
