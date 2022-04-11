@@ -138,6 +138,16 @@ public class ProductPlan implements Plan {
 	public long recordsOutput() {
 		return (long) histogram().recordsOutput();
 	}
+	
+	public String toString() {
+		String T1 = p1.toString();
+		String T2 = p2.toString();
+		StringBuilder s = new StringBuilder();
+		s.append("->ProductPlan  (#blks=").append(blocksAccessed()).append(", #recs=").append(recordsOutput()).append(")\n");
+		s.append("\t").append(T1).append("\t").append(T2);
+		return s.toString();
+	}
 
+	
 
 }
