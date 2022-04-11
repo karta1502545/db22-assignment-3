@@ -118,7 +118,7 @@ public class ProjectPlan implements Plan {
 		String c = p.toString();
 		String[] cs = c.split("\n");
 		StringBuilder sb = new StringBuilder();
-		sb.append("->");
+		sb.append("\n->");
 		sb.append("ProjectPlan: (#blks=" + blocksAccessed() + ", #recs="
 				+ recordsOutput() + ")\n");
 		for (String child : cs)
